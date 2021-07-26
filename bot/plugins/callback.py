@@ -142,7 +142,7 @@ async def cb_navg(bot, update: CallbackQuery):
     
     reply_markup = InlineKeyboardMarkup(temp_results)
     
-    text=f"<i>Found</i> <code>{leng}</code> <i>Results For Your Query:</i> <code>{query}</code>"
+    text=f"<i>Here is Your File :</i> <code>{query}</code>\nClick Below Button!"
         
     try:
         await update.message.edit(
@@ -1600,15 +1600,15 @@ async def cb_about(bot, update: CallbackQuery):
 
     text=f"<i><u>Bot's Status</u></i>\n"
     text+=f"\n<b><i>Bot's Uptime:</i></b> <code>{time_formatter(time.time() - start_uptime)}</code>\n"
-    text+=f"\n<b><i>Bot Funtion:</i></b> <i>Auto Filter Files</i>\n"
-    text+=f"""\n<b><i>Bot Support:</i></b> <a href="https://t.me/CrazyBotszGrp">@CrazyBotszGrp</a>\n"""
-    text+="""\n<b><i>Source Code:</i></b> <a href="https://github.com/CrazyBotsz/Adv-Filter-Bot-V2">Source</a>"""
+    text+=f"\n<b><i>Bot Funtion:</i></b> <i>Auto Filter + Store</i>\n"
+    text+=f"""\n<b><i>Bot:</i></b> @EFilterBot\n"""
+    text+="""\n<b><i>Owner:</i></b> Anonymous 👒"""
 
     buttons = [
         [
             InlineKeyboardButton
                 (
-                    "My Dev ⚡", url="https://t.me/AlbertEinstein_TG"
+                    "My Dev ⚡", url="https://t.me/EFilterBot"
                 ),
                 
             InlineKeyboardButton
@@ -1639,13 +1639,8 @@ async def callback_data(bot, update: CallbackQuery):
 
     if query_data == "start":
         buttons = [[
-            InlineKeyboardButton('My Dev 👨‍🔬', url='https://t.me/AlbertEinstein_TG'),
-            InlineKeyboardButton('Source Code 🧾', url ='https://github.com/CrazyBotsz/Adv-Filter-Bot-V2')
-        ],[
-            InlineKeyboardButton('Support 🛠', url='https://t.me/CrazyBotszGrp')
-        ],[
-            InlineKeyboardButton('Help ⚙', callback_data="help")
-        ]]
+            InlineKeyboardButton('👒 Eмiliα', url='https://t.me/EFilterBot'),
+         ]]
     
         reply_markup = InlineKeyboardMarkup(buttons)
         
@@ -1654,39 +1649,6 @@ async def callback_data(bot, update: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode="html",
             disable_web_page_preview=True
-        )
-
-
-    elif query_data == "help":
-        buttons = [[
-            InlineKeyboardButton('Home ⚡', callback_data='start'),
-            InlineKeyboardButton('About 🚩', callback_data='about')
-        ],[
-            InlineKeyboardButton('Close 🔐', callback_data='close')
-        ]]
-    
-        reply_markup = InlineKeyboardMarkup(buttons)
-        
-        await update.message.edit_text(
-            Translation.HELP_TEXT,
-            reply_markup=reply_markup,
-            parse_mode="html",
-            disable_web_page_preview=True
-        )
-
-
-    elif query_data == "about": 
-        buttons = [[
-            InlineKeyboardButton('Home ⚡', callback_data='start'),
-            InlineKeyboardButton('Close 🔐', callback_data='close')
-        ]]
-        
-        reply_markup = InlineKeyboardMarkup(buttons)
-        
-        await update.message.edit_text(
-            Translation.ABOUT_TEXT,
-            reply_markup=reply_markup,
-            parse_mode="html"
         )
 
 
